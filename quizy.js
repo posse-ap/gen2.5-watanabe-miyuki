@@ -1,4 +1,4 @@
-var correct = document.getElementById('correct');
+var correct = document.getElementById('correct');//ジャバスクリプト
 
 // console.log(correct);
 
