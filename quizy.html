@@ -6,6 +6,46 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>quizy</title>
+  <!-- <link rel="stylesheet" href="normalize.css" /> -->
+  <link rel="stylesheet" href="quizy.css" />
+</head>
+<body>
+  <main>
+    <section class="question">
+      <div class="question-inner">
+        <!-- question-innerを最後に複製 -->
+        <h2 class="question-title">
+          <span class="under">この地名はな</span>んて読む？
+        </h2>
+        <img src="https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png" alt="高輪">
+        <ul class="question-list">
+          <li class="question-list-item-js-nonCorrect" id = "item">こうわ</li>
+          <li class="question-list-item-js-correct" id = "item">たかなわ</li>
+          <li class="question-list-item-js-nonCorrect" id = "item">たかわ</li>
+          </div>
+        <div class="question-correctBox" id="js-correctBox">
+          <h3<span class="question-correctBox-title">正解！</span></h3>
+          <p class="question-correctBox-description">正解は「たかなわ」です！</p>
+        </div>
+        <div class="question-nonCorrectBox" id="js-nonCorrectBox">
+          <h3><span class="question-nonCorrectBox-title">不正解！</span></h3>
+          <p class="question-correctBox-description">正解は「たかなわ」です！</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="quizy.js"></script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quizy</title>
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="quizy.css" />
 </head>
@@ -35,4 +75,4 @@
   </main>
   <script src="quizy.js"></script>
 </body>
-</html>
+</html> -->

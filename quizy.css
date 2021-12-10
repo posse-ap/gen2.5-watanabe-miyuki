@@ -4,11 +4,75 @@
   max-width: 650px;
 }
 
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+li{
+  border: 1px solid #ebebeb;
+  margin: 10px;
+  padding: 10px;
+  font-weight: bold;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .1);
+  text-align: left;
+}
+
+.question-list-item-changing-color-nonCorrect {
+  background-color: #ff5128;
+  color: #fff;
+}
+.question-list-item-changing-color-correct {
+  background-color: #287dff;
+  color: #fff;
+}
+/* list-styleとは、マーカーを設定するプロパティです。マーカーは、リスト内の各項目の先頭に表示される●や■のような記号です。 */
+
+.question-list{ 
+  list-style: none;
+}
+
+.under{
+  border-bottom: green 3px solid;
+}
+
+.question-correctBox,.question-nonCorrectBox{
+  /* display: none; */
+  margin: 0 auto;
+  max-width: 650px;
+  background-color: #ebebeb;
+  margin: 10px;
+  padding: 10px;
+}
+
+.question-correctBox-title{
+  border-bottom: #287dff 3px solid;
+  font-weight: bold;
+}
+
+.question-nonCorrectBox-title{
+  border-bottom: #ff5128 3px solid;
+}
+
+.question-correctBox-description{
+  font-weight: 300;
+}
+
+
+
+/* スぺもく（12/6) 修正前 */
+/* .question{
+  margin: 0 auto;
+  max-width: 650px;
+}
+
 li{
   border: 1px solid #ebebeb;
   margin: 10px;
   padding: 10px;
   font: 600;
+  
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, .1);
 }
 
@@ -46,4 +110,4 @@ ul{
   padding: 10px;
   font: 600;
 }
-
+ */
