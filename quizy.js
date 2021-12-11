@@ -34,9 +34,9 @@ for (let j = 0; j < 10; j++) {
   + '</h2>'
   + `<img src="${images[j]}" alt="${options[j][1]}">`
   + `<ul id ="question-list${j}">`
-  +  `<li class="question-list-item-nonCorrect" id = "item0">${options[j][0]}</li>`
-  +    `<li class=question-list-item-correct${j} id = "item1">${options[j][1]}</li>`
-  +  `<li class="question-list-item-nonCorrect" id = "item2">${options[j][2]}</li>`
+  +  `<li class="question-list-item-nonCorrect" id = "${j}item0">${options[j][0]}</li>`
+  +    `<li class=question-list-item-correct${j} id = "${j}item1">${options[j][1]}</li>`
+  +  `<li class="question-list-item-nonCorrect" id = "${j}item2">${options[j][2]}</li>`
   +  '</div>'
   + `<div class="question-correctBox${j}">`
   +  '<h3<span class="question-correctBox-title">正解！</span></h3>'
@@ -90,13 +90,16 @@ for(i = a.length -1;i>0;i--){
 
 //例 a = [2,1,0]
 //この順番でitem`${a[i]}`をツリーに反映
-var itemShuffle0= document.getElementById(`item${a[0]}`);
-var itemShuffle1= document.getElementById(`item${a[1]}`);
-var itemShuffle2= document.getElementById(`item${a[2]}`);
+var itemShuffle0= document.getElementById(`${number}item${a[0]}`);
+var itemShuffle1= document.getElementById(`${number}item${a[1]}`);
+var itemShuffle2= document.getElementById(`${number}item${a[2]}`);
 
-document.getElementById(`question-list${number}`).appendChild(document.getElementById(`question-list${number}`).removeChild(itemShuffle0));
-document.getElementById(`question-list${number}`).appendChild(document.getElementById(`question-list${number}`).removeChild(itemShuffle1));
-document.getElementById(`question-list${number}`).appendChild(document.getElementById(`question-list${number}`).removeChild(itemShuffle2));
+document.getElementById(`question-list${number}`).removeChild(itemShuffle0);
+document.getElementById(`question-list${number}`).appendChild(itemShuffle0);
+document.getElementById(`question-list${number}`).removeChild(itemShuffle1);
+document.getElementById(`question-list${number}`).appendChild(itemShuffle1);
+document.getElementById(`question-list${number}`).removeChild(itemShuffle2);
+document.getElementById(`question-list${number}`).appendChild(itemShuffle2);
 // document.getElementById(`question-list${number}`).appendChild(itemShuffle1);
 // document.getElementById(`question-list${number}`).appendChild(itemShuffle2);
 }
