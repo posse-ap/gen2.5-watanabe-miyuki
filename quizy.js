@@ -33,16 +33,16 @@ for (let j = 0; j < 10; j++) {
   +  `<span class="under">${j+1}. この地名はな</span>んて読む？`
   + '</h2>'
   + `<img src="${images[j]}" alt="${options[j][1]}">`
-  + `<ul class="question-list" id ="question-list${j}">`
+  + `<ul id ="question-list${j}">`
   +  `<li class="question-list-item-nonCorrect" id = "item0">${options[j][0]}</li>`
-  +    `<li class="question-list-item-correct" id = "item1">${options[j][1]}</li>`
+  +    `<li class=question-list-item-correct${j} id = "item1">${options[j][1]}</li>`
   +  `<li class="question-list-item-nonCorrect" id = "item2">${options[j][2]}</li>`
   +  '</div>'
-  + '<div class="question-correctBox">'
+  + `<div class="question-correctBox${j}">`
   +  '<h3<span class="question-correctBox-title">正解！</span></h3>'
   +  `<p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>`
   +'</div>'
-  + '<div class="question-nonCorrectBox">'
+  + `<div class="question-nonCorrectBox${j}">`
   +  '<h3><span class="question-nonCorrectBox-title">不正解！</span></h3>'
   +  `<p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>`
   + '</div>'
@@ -51,33 +51,32 @@ for (let j = 0; j < 10; j++) {
   document.getElementById('quizLocation').insertAdjacentHTML('beforebegin', quiz);
 
 //////////////////一つのクイズの動作完成//////////////////
+    shuffle(j);
+};
 
-// js-nonCorrectBox 非表示
-const correctBox = document.querySelector('.question-correctBox');
-correctBox.style.display ="none";
-const nonCorrectBox = document.querySelector('.question-nonCorrectBox');
-nonCorrectBox.style.display ="none";
-const correctItem = document.querySelector('.question-list-item-correct');
-var questionList= document.getElementById(`question-list${j}`);
+function shuffle(number) {
+  // js-nonCorrectBox 非表示
+document.querySelector(`.question-correctBox${number}`).style.display ="none";
+document.querySelector(`.question-nonCorrectBox${number}`).style.display ="none";
+// const correctItem = document.querySelector('.question-list-item-correct');
+// var questionList = document.getElementById(`question-list${j}`);
 
 // question-list-item-js-nonCorrectをクリック→
-// .question-list-item-js-nonCorrect(css)適応＆　js-nonCorrectBox非表示を解除＆クリックは一度
-questionList.addEventListener('click', e => {
+// .question-list-item-js-nonCorrect(css)適応＆js-nonCorrectBox非表示を解除＆クリックは一度
+document.getElementById(`question-list${number}`).addEventListener('click', e => {
     if (e.target.className === 'question-list-item-nonCorrect') {
     e.target.classList.add('question-list-item-changing-color-nonCorrect');
-    correctItem.classList.add('question-list-item-changing-color-correct');
-    nonCorrectBox.style.display ="block";
-    }else if (e.target.className === 'question-list-item-correct') {
+    document.querySelector(`.question-list-item-correct${number}`).classList.add('question-list-item-changing-color-correct');
+    document.querySelector(`.question-nonCorrectBox${number}`).style.display ="block";
+    }else if (e.target.className === `question-list-item-correct${number}`) {
     e.target.classList.add('question-list-item-changing-color-correct');
-    correctBox.style.display ="block";
+    document.querySelector(`.question-correctBox${number}`).style.display ="block";
     }},
     { once: true });
-
-
 //フィッシャーイーツで[0,1,2]をランダムに並び変える。
 
-//ソートされた配列
-a = [0,1,2];
+//ソートされ}た配列
+a = [0,1,2]
 
 //取り出す範囲(箱の中)を末尾から狭める繰り返し
 for(i = a.length -1;i>0;i--){
@@ -95,8 +94,9 @@ var itemShuffle0= document.getElementById(`item${a[0]}`);
 var itemShuffle1= document.getElementById(`item${a[1]}`);
 var itemShuffle2= document.getElementById(`item${a[2]}`);
 
-questionList.appendChild(itemShuffle0);
-questionList.appendChild(itemShuffle1);
-questionList.appendChild(itemShuffle2);
-
-};
+document.getElementById(`question-list${number}`).appendChild(document.getElementById(`question-list${number}`).removeChild(itemShuffle0));
+document.getElementById(`question-list${number}`).appendChild(document.getElementById(`question-list${number}`).removeChild(itemShuffle1));
+document.getElementById(`question-list${number}`).appendChild(document.getElementById(`question-list${number}`).removeChild(itemShuffle2));
+// document.getElementById(`question-list${number}`).appendChild(itemShuffle1);
+// document.getElementById(`question-list${number}`).appendChild(itemShuffle2);
+}
