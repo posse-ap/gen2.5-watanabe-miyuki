@@ -37,8 +37,16 @@ li{
   border-bottom: green 3px solid;
 }
 
-.question-correctBox,.question-nonCorrectBox{
-  /* display: none; */
+.question-correctBox0,.question-nonCorrectBox0,
+.question-correctBox1,.question-nonCorrectBox1,
+.question-correctBox2,.question-nonCorrectBox2,
+.question-correctBox3,.question-nonCorrectBox3,
+.question-correctBox4,.question-nonCorrectBox4,
+.question-correctBox5,.question-nonCorrectBox5,
+.question-correctBox6,.question-nonCorrectBox6,
+.question-correctBox7,.question-nonCorrectBox7,
+.question-correctBox8,.question-nonCorrectBox8,
+.question-correctBox9,.question-nonCorrectBox9{
   margin: 0 auto;
   max-width: 650px;
   background-color: #ebebeb;
@@ -58,56 +66,3 @@ li{
 .question-correctBox-description{
   font-weight: 300;
 }
-
-
-
-/* スぺもく（12/6) 修正前 */
-/* .question{
-  margin: 0 auto;
-  max-width: 650px;
-}
-
-li{
-  border: 1px solid #ebebeb;
-  margin: 10px;
-  padding: 10px;
-  font: 600;
-  
-  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, .1);
-}
-
-ul{
-  list-style: none;
-}
-
-.under{
-  border-bottom: green 3px solid;
-}
-
-.correctbox{
-  display: none;
-}
-
-.noncorrectbox{
-  display: none;
-}
-
-.correctbox{
-  margin: 0 auto;
-  max-width: 650px;
-  border: 1px solid #ebebeb;
-  margin: 10px;
-  padding: 10px;
-  font: 600;
-  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, .1);
-}
-
-.noncorrectbox{
-  margin: 0 auto;
-  max-width: 650px;
-  background-color: rgba(0, 0, 0, .1);
-  margin: 10px;
-  padding: 10px;
-  font: 600;
-}
- */

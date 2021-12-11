@@ -1,4 +1,4 @@
-//////////////////問題10門作成//////////////////
+//写真一覧
 let images = [
   "https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png",//1
   "https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png",//2
@@ -13,7 +13,7 @@ let images = [
 ];
 
 //  [不正解、正解、不正解]
-let options = [//options[i][0]
+let options = [//options[i][0]で表す
   ["こうわ", "たかなわ", "たかわ"],
   ["かめと", "かめいど","かめど"],
   ["おかとまち", "こうじまち", "かゆまち"],
@@ -26,6 +26,7 @@ let options = [//options[i][0]
   ["こばく", "こぐれ", "こしゃく"],
   ];
 
+/////////////////十問html繰り返し/////////////////
 for (let j = 0; j < 10; j++) {
   let quiz =
   '<div class="question-inner">'
@@ -50,19 +51,18 @@ for (let j = 0; j < 10; j++) {
 
   document.getElementById('quizLocation').insertAdjacentHTML('beforebegin', quiz);
 
-//////////////////一つのクイズの動作完成//////////////////
-    shuffle(j);
+/////////////////十問js繰り返し(色の変更、解説表示、シャッフル）/////////////////
+js_motion(j);
 };
 
-function shuffle(number) {
+////////色の変化＆解説表示////////
+function js_motion(number) {
   // js-nonCorrectBox 非表示
 document.querySelector(`.question-correctBox${number}`).style.display ="none";
 document.querySelector(`.question-nonCorrectBox${number}`).style.display ="none";
-// const correctItem = document.querySelector('.question-list-item-correct');
-// var questionList = document.getElementById(`question-list${j}`);
 
-// question-list-item-js-nonCorrectをクリック→
-// .question-list-item-js-nonCorrect(css)適応＆js-nonCorrectBox非表示を解除＆クリックは一度
+  // question-list-item-js-nonCorrectをクリック→
+  // .question-list-item-js-nonCorrect(css)適応＆js-nonCorrectBox非表示を解除＆クリックは一度
 document.getElementById(`question-list${number}`).addEventListener('click', e => {
     if (e.target.className === 'question-list-item-nonCorrect') {
     e.target.classList.add('question-list-item-changing-color-nonCorrect');
@@ -73,12 +73,13 @@ document.getElementById(`question-list${number}`).addEventListener('click', e =>
     document.querySelector(`.question-correctBox${number}`).style.display ="block";
     }},
     { once: true });
-//フィッシャーイーツで[0,1,2]をランダムに並び変える。
 
-//ソートされ}た配列
+
+////////シャッフル////////
+
+  //フィッシャーイーツで[0,1,2]をランダムに並び変える。
 a = [0,1,2]
-
-//取り出す範囲(箱の中)を末尾から狭める繰り返し
+    //取り出す範囲(箱の中)を末尾から狭める繰り返し
 for(i = a.length -1;i>0;i--){
     //乱数生成を使ってランダムに取り出す値を決める
     r = Math.floor(Math.random()*(i+1));
@@ -86,10 +87,9 @@ for(i = a.length -1;i>0;i--){
     tmp = a[i];
     a[i] = a[r];
     a[r] = tmp;
-}
 
-//例 a = [2,1,0]
-//この順番でitem`${a[i]}`をツリーに反映
+  //例 a = [2,1,0]
+  //2,1,0の順で選択肢三問を取得、表示
 var itemShuffle0= document.getElementById(`${number}item${a[0]}`);
 var itemShuffle1= document.getElementById(`${number}item${a[1]}`);
 var itemShuffle2= document.getElementById(`${number}item${a[2]}`);
@@ -100,6 +100,5 @@ document.getElementById(`question-list${number}`).removeChild(itemShuffle1);
 document.getElementById(`question-list${number}`).appendChild(itemShuffle1);
 document.getElementById(`question-list${number}`).removeChild(itemShuffle2);
 document.getElementById(`question-list${number}`).appendChild(itemShuffle2);
-// document.getElementById(`question-list${number}`).appendChild(itemShuffle1);
-// document.getElementById(`question-list${number}`).appendChild(itemShuffle2);
+};
 }
