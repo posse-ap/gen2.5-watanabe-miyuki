@@ -1,5 +1,10 @@
-.question{
-  /* text-align: center; */
+h1{
+  font-size: 1.5em;
+  margin: 0 auto;
+  max-width: 650px;
+}
+
+.question {
   margin: 0 auto;
   max-width: 650px;
 }
@@ -10,7 +15,7 @@ ul {
   padding: 0px;
 }
 
-li{
+.question-list-item {
   border: 1px solid #ebebeb;
   margin: 10px;
   padding: 10px;
@@ -37,21 +42,17 @@ li{
   border-bottom: green 3px solid;
 }
 
-.question-correctBox0,.question-nonCorrectBox0,
-.question-correctBox1,.question-nonCorrectBox1,
-.question-correctBox2,.question-nonCorrectBox2,
-.question-correctBox3,.question-nonCorrectBox3,
-.question-correctBox4,.question-nonCorrectBox4,
-.question-correctBox5,.question-nonCorrectBox5,
-.question-correctBox6,.question-nonCorrectBox6,
-.question-correctBox7,.question-nonCorrectBox7,
-.question-correctBox8,.question-nonCorrectBox8,
-.question-correctBox9,.question-nonCorrectBox9{
+.question-correctBox,.question-nonCorrectBox {
   margin: 0 auto;
   max-width: 650px;
   background-color: #ebebeb;
   margin: 10px;
   padding: 10px;
+  display: none;
+}
+
+.question-correctBox-visible, .question-nonCorrectBox-visible {
+  display: block;
 }
 
 .question-correctBox-title{
