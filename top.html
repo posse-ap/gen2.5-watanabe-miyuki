@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>top</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="modal-container">
+      <!-- オーバーレイ -->
+      <div id="overlay" class="overlay"></div>
+      <!-- モーダルウィンドウ -->
+      <div class="modal-window">
+        <!-- 閉じるボタン -->
+        <span class="js-close button-close"></span>
+        <div class="record_container">
+          <div>
+            <p class="record_title">学習日</p>
+            <input type="date" />
+          </div>
+          <div>
+            <p class="record_title">学習コンテンツ（複数選択可）</p>
+            <input
+              type="checkbox"
+              name="study_contents"
+              value="N予備校"
+            />N予備校
+            <input
+              type="checkbox"
+              name="study_contents"
+              value="ドットインストール"
+            />ドットインストール
+            <input
+              type="checkbox"
+              name="study_contents"
+              value="POSSE課題"
+            />POSSE課題
+          </div>
+          <div>
+            <p class="record_title">学習言語（複数選択可）</p>
+            <input type="checkbox" name="study_language" value="HTML" />HTML
+            <input type="checkbox" name="study_language" value="CSS" />CSS
+            <input
+              type="checkbox"
+              name="study_language"
+              value="JavaScript"
+            />JavaScript
+            <input type="checkbox" name="study_language" value="PHP" />PHP
+            <input
+              type="checkbox"
+              name="study_language"
+              value="Laravel"
+            />Laravel
+            <input type="checkbox" name="study_language" value="SQL" />SQL
+            <input type="checkbox" name="study_language" value="SHELL" />SHELL
+            <input
+              type="checkbox"
+              name="study_language"
+              value="情報システム基礎知識（その他）"
+            />情報システム基礎知識（その他）
+          </div>
+          <div>
+            <p class="record_title">学習時間</p>
+            <input type="time" />
+          </div>
+          <div>
+            <p class="record_title">Twitter用コメント</p>
+            <input type="checkbox" />Twitterにシェアする
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ここからtop -->
+    <header>
+      <div><img src="./img/POSSElogo.jpg" alt="" /></div>
+      <div class="now_week">4th week</div>
+      <button class="js-open button-open button-pc">記録・投稿</button>
+    </header>
+    <main>
+      <div class="container">
+        <div class="left-container">
+          <div class="timer">
+            <div>
+              <p class="timer_title">Today</p>
+              <p class="timer_number">3</p>
+              <p class="timer_hour">hour</p>
+            </div>
+            <div>
+              <p class="timer_title">Month</p>
+              <p class="timer_number">120</p>
+              <p class="timer_hour">hour</p>
+            </div>
+            <div>
+              <p class="timer_title">Total</p>
+              <p class="timer_number">1348</p>
+              <p class="timer_hour">hour</p>
+            </div>
+          </div>
+          <div class="bar_graph"><img src="./img/study_time.png" alt="" /></div>
+        </div>
+        <div class="right-container">
+          <div class="pie_charts" alt="">
+            <div class="study_language">
+              <p>学習言語</p>
+              <img src="./img/study_language.png" alt="" />
+            </div>
+            <div class="study_contents">
+              <p>学習コンテンツ</p>
+              <img src="./img/study_contents.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="date">
+          <span class="back_date">＜</span>2020年 10月<span class="next_date"
+            >＞</span
+          >
+        </div>
+        <button class="js-open button-open button-sp">記録・投稿</button>
+      </div>
+    </main>
+  </body>
+</html>
