@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+      defer
+    ></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="./js/script.js" defer></script>
   </head>
   <body>
@@ -84,44 +89,55 @@
     </header>
     <main>
       <div class="container">
-        <div class="left-container">
-          <div class="timer">
-            <div>
-              <p class="timer_title">Today</p>
-              <p class="timer_number">3</p>
-              <p class="timer_hour">hour</p>
+        <div class="inner-container">
+          <div class="left-container">
+            <div class="timer">
+              <div>
+                <p class="timer_title">Today</p>
+                <p class="timer_number">3</p>
+                <p class="timer_hour">hour</p>
+              </div>
+              <div>
+                <p class="timer_title">Month</p>
+                <p class="timer_number">120</p>
+                <p class="timer_hour">hour</p>
+              </div>
+              <div>
+                <p class="timer_title">Total</p>
+                <p class="timer_number">1348</p>
+                <p class="timer_hour">hour</p>
+              </div>
             </div>
-            <div>
-              <p class="timer_title">Month</p>
-              <p class="timer_number">120</p>
-              <p class="timer_hour">hour</p>
-            </div>
-            <div>
-              <p class="timer_title">Total</p>
-              <p class="timer_number">1348</p>
-              <p class="timer_hour">hour</p>
-            </div>
-          </div>
-          <div class="bar_graph"><img src="./img/study_time.png" alt="" /></div>
-        </div>
-        <div class="right-container">
-          <div class="pie_charts" alt="">
-            <div class="study_language">
-              <p>学習言語</p>
-              <img src="./img/study_language.png" alt="" />
-            </div>
-            <div class="study_contents">
-              <p>学習コンテンツ</p>
-              <img src="./img/study_contents.png" alt="" />
+            <div class="bar_graph">
+              <div id="chart_div" style="width:100%"></div>
             </div>
           </div>
+          <div class="right-container">
+            <div class="donuts" alt="">
+              <div class="study_language">
+                <p>学習コンテンツ</p>
+                <div class="chartBox"><!-- (仮クラス名) -->
+                  <div id="Chart2" class="chart"></div>
+                </div>
+              </div>
+              <div class="study_contents">
+                <p>学習言語</p>
+                <div class="chartBox">
+                  <div id="Chart3" class="chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="date">
-          <span class="back_date">＜</span>2020年 10月<span class="next_date"
-            >＞</span
-          >
+
+        <div>
+          <div class="date">
+            <span class="back_date">＜</span>2020年 10月<span class="next_date"
+              >＞</span
+            >
+          </div>
+          <button class="js-open button-open button-sp">記録・投稿</button>
         </div>
-        <button class="js-open button-open button-sp">記録・投稿</button>
       </div>
     </main>
   </body>

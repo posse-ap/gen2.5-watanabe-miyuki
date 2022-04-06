@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@media (min-width: 480px) {
+@media (min-width: 800px) {
   .button-pc {
     margin-left: auto;
     width: 20rem;
@@ -9,7 +9,7 @@
     display: none;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 800px) {
   .button-pc {
     display: none;
   }
@@ -18,197 +18,201 @@
     justify-content: center;
     width: 100%;
   }
-
-  html {
-    font-size: 1vw;
-    background-color: #f5f5f8;
-  }
-
-  header {
-    align-items: center;
-    display: flex;
-    background-color: #FFF;
-    height: 64px;
-    padding: 0 5vw;
-  }
-  header .now_week {
-    color: #97b9d1;
-    font-size: 0.9rem;
-  }
-
-  /* モーダルウィンドウ */
-  /* 開くボタン */
-
-  /* モーダルウィンドウ */
-
-  /* 閉じるボタン */
-
-  /* オーバーレイ */
 }
-@media (max-width: 480px) and (min-width: 480px) {
+html {
+  background-color: #f5f5f8;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  background-color: #FFF;
+  width: 100%;
+  height: 64px;
+  padding: 0 15px;
+}
+header .now_week {
+  color: #97b9d1;
+  font-size: 0.9rem;
+}
+@media (min-width: 800px) {
   header img {
-    width: 15vw;
+    width: 150px;
   }
 }
-@media (max-width: 480px) and (max-width: 480px) {
+@media (max-width: 800px) {
   header img {
     width: 100px;
   }
 }
-@media (max-width: 480px) {
-  main {
-    background-color: #f5f5f8;
+
+main {
+  height: 100%;
+  background-color: #f5f5f8;
+}
+main .container {
+  height: 100%;
+  padding: 0 2rem;
+}
+main .inner-container {
+  height: 80%;
+}
+@media (min-width: 800px) {
+  main .left-container, main .right-container {
+    width: 50%;
   }
-  main .container {
-    width: 80vw;
-    margin: auto;
-  }
-  main .pie_charts .bar_graph {
-    padding: auto;
-    margin: 0;
-  }
-  main .pie_charts img {
+}
+@media (max-width: 800px) {
+  main .left-container, main .right-container {
     width: 100%;
   }
-  main .bar_graph img {
-    width: 100%;
-  }
-  main .timer, main .pie_charts {
+}
+main .donuts {
+  width: 100%;
+  height: 100%;
+}
+main .timer, main .donuts {
+  display: flex;
+}
+main .timer div, main .bar_graph, main .study_language, main .study_contents {
+  margin: 10px;
+  background-color: #FFF;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px #dbdbdb;
+}
+main .study_language, main .study_contents {
+  width: 100%;
+}
+@media (min-width: 800px) {
+  main .inner-container {
     display: flex;
   }
-  main .timer div, main .bar_graph, main .study_language, main .study_contents {
-    margin: 10px;
-    padding: 20px;
-    background-color: #FFF;
-    border-radius: 10px;
-    box-shadow: 2px 2px 4px #dbdbdb;
-  }
 }
-@media (max-width: 480px) and (min-width: 480px) {
-  main .container {
-    display: flex;
-  }
+.timer div {
+  width: 100%;
+  justify-content: center;
+  margin: 0;
+  padding: auto;
 }
-@media (max-width: 480px) {
-  .timer div {
-    width: 100%;
-    justify-content: center;
-  }
-  .timer .timer_title, .timer .timer_number, .timer .timer_hour {
-    text-align: center;
-  }
-  .timer .timer_title {
-    font-weight: bold;
-    color: #0f71bc;
-    font-size: 1.5rem;
-  }
-  .timer .timer_number {
-    font-weight: bold;
-    color: #000;
-    font-size: 2rem;
-  }
-  .timer .timer_hour {
-    font-weight: bold;
-    color: #97b9d1;
-    font-size: 0.5rem;
-  }
+.timer .timer_title, .timer .timer_number, .timer .timer_hour {
+  text-align: center;
 }
-@media (max-width: 480px) {
-  .date {
-    text-align: center;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #000;
-  }
-  .date .back_date {
-    color: #0f71bc;
-  }
-  .date .next_date {
-    color: #97b9d1;
-  }
+.timer .timer_title {
+  font-weight: bold;
+  color: #0f71bc;
+  font-size: 10%;
 }
-@media (max-width: 480px) {
-  .button-open {
-    padding: 1em;
-    background: linear-gradient(to right, #0f71bc, #3ccfff);
-    color: #FFF;
-    border-radius: 20rem;
-    cursor: pointer;
-    border: none;
-  }
+.timer .timer_number {
+  font-weight: bold;
+  color: #000;
 }
-@media (max-width: 480px) {
-  .modal-window {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 900px;
-    background-color: #FFF;
-    border-radius: 15px;
-    z-index: 11;
-    padding: 10px;
-  }
+.timer .timer_hour {
+  font-weight: bold;
+  color: #97b9d1;
 }
-@media (max-width: 480px) {
-  .button-close {
-    /* position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    padding: 1em;
-    background-color: #c96931;
-    color: #eaeaea;
-    border-radius: 20rem; */
-    margin-left: auto;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    /* 丸みの度合い */
-    background: #f5f5f8;
-    /* ボタンの背景色 */
-  }
-  .button-close:before, .button-close:after {
-    /* 共通設定 */
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1.5px;
-    /* 棒の幅（太さ） */
-    height: 13px;
-    /* 棒の高さ */
-    background: #000;
-    border-radius: 1.5px;
-    /* 棒の四隅の丸み*/
-  }
-  .button-close:before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  .button-close:after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
+
+.date {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 5px;
+  color: #000;
 }
-@media (max-width: 480px) {
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-  }
+.date .back_date {
+  color: #0f71bc;
 }
-@media (max-width: 480px) {
-  .record_container {
-    padding: 16px 46px 46px 46px;
-  }
+.date .next_date {
+  color: #97b9d1;
+}
+
+/* モーダルウィンドウ */
+/* 開くボタン */
+.button-open {
+  padding: 1em;
+  background: linear-gradient(to right, #0f71bc, #3ccfff);
+  color: #FFF;
+  border-radius: 20rem;
+  cursor: pointer;
+  border: none;
+}
+
+/* モーダルウィンドウ */
+.modal-window {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 900px;
+  background-color: #FFF;
+  border-radius: 15px;
+  z-index: 11;
+  padding: 10px;
+}
+
+/* 閉じるボタン */
+.button-close {
+  /* position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding: 1em;
+  background-color: #c96931;
+  color: #eaeaea;
+  border-radius: 20rem; */
+  margin-left: auto;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* 丸みの度合い */
+  background: #f5f5f8;
+  /* ボタンの背景色 */
+}
+.button-close:before, .button-close:after {
+  /* 共通設定 */
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5px;
+  /* 棒の幅（太さ） */
+  height: 13px;
+  /* 棒の高さ */
+  background: #000;
+  border-radius: 1.5px;
+  /* 棒の四隅の丸み*/
+}
+.button-close:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.button-close:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* オーバーレイ */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.record_container {
+  padding: 16px 46px 46px 46px;
 }
 /*# sourceMappingURL=style.css.map */

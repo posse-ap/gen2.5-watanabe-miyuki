@@ -1,7 +1,7 @@
 @use './base/variables' as v;
 @use './pages/record';
 
-$sp: 480px;  // スマホ
+$sp: 800px;  // スマホ
 
 @mixin pc {
   @media (min-width: ($sp)) {
@@ -15,8 +15,6 @@ $sp: 480px;  // スマホ
   }
 }
 
-// ↓で記述
-
 //レスポンシブ
 @include pc {
   
@@ -24,6 +22,8 @@ $sp: 480px;  // スマホ
 @include sp {
   
 };//sp
+
+//高さを
 
 //button--------------------------------------------
 
@@ -43,15 +43,22 @@ $sp: 480px;  // スマホ
     // margin: 10px;
     // padding: auto;
     // width: 80rem;};
+  }
 };//sp
 
 //--------------------------------------------
 
 html{
-  font-size: 1vw;
-  background-color: v.$back-ground-color
-}//一つ一つはrem
+  background-color: v.$back-ground-color;
+  height: 100%;
+}
 
+body {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  // height: 100vh;
+  height:100%; 
+}
 
 // header
 header{
@@ -59,9 +66,9 @@ header{
   // position: fixed;
   display: flex;
   background-color: #FFF;
-  // width: 100%;
+  width: 100%;
   height: 64px;
-  padding: 0 5vw;
+  padding: 0 15px;
 
   .now_week{
     color: v.$sub-color;
@@ -72,14 +79,14 @@ header{
   @include pc {
 
     img{
-      width: 15vw;
+      width: 150px;
   }
   };//pc
 
 @include sp {
 
   img{
-    width: 100px;
+    width:  100px;
 }
 };//sp
 }//header
@@ -89,48 +96,61 @@ header{
 main{
   // padding-top: 64px;
   // height: auto;
+  height: 100%;
   background-color: v.$back-ground-color;
 
   .container{
-    // height: 70vh;
-    width: 80vw;
+    height: 100%;
+    // width: 100%;
+    padding: 0 2rem;
     // justify-content: center;
-    margin: auto;
+    // margin: auto;
   }
 
-  // .left-container{
-  //   padding: 0;
-  // }
-
-  .pie_charts .bar_graph{
-    padding: auto;
-    margin: 0;
+  .inner-container{
+    height: 80%;
   }
 
-  .pie_charts img{
-  width: 100%;
+  .left-container, .right-container{
+    @include pc {
+    width: 50%;
+    };//pc
+    @include sp {
+    width: 100%
+    };//sp
   }
 
-  .bar_graph img{
-  width: 100%;
+
+  .donuts .bar_graph{
+    // width: 100%;
   }
 
-  .timer, .pie_charts{
+  .donuts{
+    width: 100%;
+    height: 100%;
+  }
+
+  .timer, .donuts{
     display: flex;
-    
+    // width: 100%;
   }
 
   .timer div, .bar_graph, .study_language, .study_contents{
     margin: 10px;
-    padding: 20px;
+    // padding: 20px;
     background-color: #FFF;
     border-radius: 10px;
-    box-shadow: 2px 2px 4px #dbdbdb;
+    box-shadow: 2px 2px 4px #dbdbdb;  
   }
 
+  .study_language, .study_contents{
+    width: 100%;
+  }
+
+  
 //レスポンシブ
 @include pc {
-  .container{
+  .inner-container{
     display: flex;
   }
 };//pc
@@ -145,6 +165,8 @@ main{
   div{
     width: 100%;
     justify-content: center;
+    margin: 0;
+    padding: auto;
   }
 
   .timer_title, .timer_number, .timer_hour{
@@ -154,30 +176,31 @@ main{
   .timer_title{
     font-weight: bold;
     color: v.$main-color;
-    font-size: 1.5rem;
-
+    font-size: 10%;
   }
 
 
   .timer_number{
     font-weight: bold;
     color: #000;
-    font-size: 2rem;
+    // font-size: 12px;
   }
 
   .timer_hour{
     font-weight: bold;
     color: v.$sub-color;
-    font-size: 0.5rem;
+    // font-size: 5px;
   }
 }//timer
 
 // date
 .date{
+  display: block;
   text-align: center;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 5px;
   color: #000;
+
 
   .back_date{
   color: v.$main-color
@@ -277,4 +300,6 @@ main{
   padding: 16px 46px 46px 46px;//上　すでに10px+30px
 }
 
+.chartBox{
+  
 }
