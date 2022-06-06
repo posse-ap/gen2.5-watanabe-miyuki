@@ -30,6 +30,7 @@ $title = $title_stmt->fetch(PDO::FETCH_COLUMN);
 </head>
 <body>
   <main>
+  <?= $title ?>
     <section class="question">
       <div id="quizLocation"></div>
     </section>
