@@ -7,5 +7,5 @@ CREATE TABLE big_questions (
 INSERT INTO big_questions
 VALUES
   (1, '東京の難読地名クイズ'),
-  (2, '広島県の難読地名クイズ');
+  (2, '広島県の難読地名iクイズ');
 
