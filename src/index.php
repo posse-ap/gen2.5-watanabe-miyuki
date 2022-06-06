@@ -2,7 +2,7 @@
 require('dbconnect.php');
 
 $stmt = $db->query('SELECT * FROM big_questions');
-$big_question_results = $stmt->fetchAll();
+$big_questions = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -16,10 +16,10 @@ $big_question_results = $stmt->fetchAll();
 </head>
 
 <body>
-<?php foreach ($big_question_results as $big_question_result) : ?>
+<?php foreach ($big_questions as $big_question) : ?>
 
 <div>
-  <a href="/quiz.php?id=<?= $big_question_result['id'] ?>"><?= $big_question_result['id'] . '. ' . $big_question_result['name']; ?></a> 
+  <a href="/quiz.php?id=<?= $big_question['id'] ?>"><?= $big_question['id'] . '. ' . $big_question['name']; ?></a> 
 </div>
 <?php endforeach; ?>
 

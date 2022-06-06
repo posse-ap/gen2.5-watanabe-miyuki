@@ -4,7 +4,7 @@ CREATE TABLE big_questions (
   name VARCHAR(255) NOT NULL
 );
 
-INSERT INTO big_questions
+INSERT INTO big_questions (id, name)
 VALUES
   (1, '東京の難読地名クイズ'),
   (2, '広島県の難読地名クイズ');
@@ -14,14 +14,14 @@ CREATE TABLE choices (
   id SMALLINT(4),
   question_id SMALLINT(4),
   name VARCHAR(255) NOT NULL,
-  id SMALLINT(4),
+  valid SMALLINT(4)
 );
 
-INSERT INTO choices
+INSERT INTO choices (id, question_id, name, valid)
 VALUES
   (1, 1, 'たかなわ', 1),
   (2, 1, 'たかわ', 0),
   (3, 1, 'こうわ', 0),
   (4, 2, 'むこうひら', 0),
   (5, 2, 'むきひら', 0),
-  (6, 2, 'むかいなだ', 1)
+  (6, 2, 'むかいなだ', 1);

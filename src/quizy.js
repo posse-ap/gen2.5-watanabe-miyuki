@@ -1,59 +1,59 @@
 //写真一覧
-let images = [
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png",//1
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png",//2
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/ad4f8badd896f1a9b527c530ebf8ac7f.png",//3
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/ee645c9f43be1ab3992d121ee9e780fb.png",//4
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/6a235aaa10f0bd3ca57871f76907797b.png",//5
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/0b6789cf496fb75191edf1e3a6e05039.png",//6
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/23e698eec548ff20a4f7969ca8823c53.png",//7
-  "https://d1khcm40x1j0f.cloudfront.net/quiz/50a753d151d35f8602d2c3e2790ea6e4.png",//8
-  "https://d1khcm40x1j0f.cloudfront.net/words/8cad76c39c43e2b651041c6d812ea26e.png",//9
-  "https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png"//10
-];
+// let images = [
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png",//1
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png",//2
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/ad4f8badd896f1a9b527c530ebf8ac7f.png",//3
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/ee645c9f43be1ab3992d121ee9e780fb.png",//4
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/6a235aaa10f0bd3ca57871f76907797b.png",//5
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/0b6789cf496fb75191edf1e3a6e05039.png",//6
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/23e698eec548ff20a4f7969ca8823c53.png",//7
+//   "https://d1khcm40x1j0f.cloudfront.net/quiz/50a753d151d35f8602d2c3e2790ea6e4.png",//8
+//   "https://d1khcm40x1j0f.cloudfront.net/words/8cad76c39c43e2b651041c6d812ea26e.png",//9
+//   "https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png"//10
+// ];
 
 //  [不正解、正解、不正解]
-let options = [//options[i][0]で表す
-  ["こうわ", "たかなわ", "たかわ"],
-  ["かめと", "かめいど","かめど"],
-  ["おかとまち", "こうじまち", "かゆまち"],
-  ["ごせいもん", "おなりもん", "おかどもん"],
-  ["たたら", "とどろき", "たたりき"],
-  ["せきこうい", "しゃくじい", "いじい"],
-  ["ざっしき", "ぞうしき", "さっしょく"],
-  ["ごしろちょう", "おかちまち", "みとちょう"],
-  ["ろっこつ", "ししぼね", "しこね"],
-  ["こばく", "こぐれ", "こしゃく"],
-  ];
+// let options = [//options[i][0]で表す
+//   ["こうわ", "たかなわ", "たかわ"],
+//   ["かめと", "かめいど","かめど"],
+//   ["おかとまち", "こうじまち", "かゆまち"],
+//   ["ごせいもん", "おなりもん", "おかどもん"],
+//   ["たたら", "とどろき", "たたりき"],
+//   ["せきこうい", "しゃくじい", "いじい"],
+//   ["ざっしき", "ぞうしき", "さっしょく"],
+//   ["ごしろちょう", "おかちまち", "みとちょう"],
+//   ["ろっこつ", "ししぼね", "しこね"],
+//   ["こばく", "こぐれ", "こしゃく"],
+//   ];
 
 /////////////////十問html繰り返し/////////////////
-for (let j = 0; j < 10; j++) {
-  let quiz =
-  '<div class="question-inner">'
-  + '<h2 class="question-title">'
-  +  `<span class="under">${j+1}. この地名はな</span>んて読む？`
-  + '</h2>'
-  + `<img src="${images[j]}" alt="${options[j][1]}">`
-  + `<ul id ="question-list${j}">`
-  +  `<li class="question-list-item-nonCorrect" id = "${j}item0">${options[j][0]}</li>`
-  +    `<li class=question-list-item-correct${j} id = "${j}item1">${options[j][1]}</li>`
-  +  `<li class="question-list-item-nonCorrect" id = "${j}item2">${options[j][2]}</li>`
-  +  '</div>'
-  + `<div class="question-correctBox${j}">`
-  +  '<h3<span class="question-correctBox-title">正解！</span></h3>'
-  +  `<p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>`
-  +'</div>'
-  + `<div class="question-nonCorrectBox${j}">`
-  +  '<h3><span class="question-nonCorrectBox-title">不正解！</span></h3>'
-  +  `<p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>`
-  + '</div>'
-  + '</div>';
+// for (let j = 0; j < 10; j++) {
+//   let quiz =
+//   '<div class="question-inner">'
+//   + '<h2 class="question-title">'
+//   +  `<span class="under">${j+1}. この地名はな</span>んて読む？`
+//   + '</h2>'
+//   + `<img src="${images[j]}" alt="${options[j][1]}">`
+//   + `<ul id ="question-list${j}">`
+//   +  `<li class="question-list-item-nonCorrect" id = "${j}item0">${options[j][0]}</li>`
+//   +    `<li class=question-list-item-correct${j} id = "${j}item1">${options[j][1]}</li>`
+//   +  `<li class="question-list-item-nonCorrect" id = "${j}item2">${options[j][2]}</li>`
+//   +  '</div>'
+//   + `<div class="question-correctBox${j}">`
+//   +  '<h3<span class="question-correctBox-title">正解！</span></h3>'
+//   +  `<p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>`
+//   +'</div>'
+//   + `<div class="question-nonCorrectBox${j}">`
+//   +  '<h3><span class="question-nonCorrectBox-title">不正解！</span></h3>'
+//   +  `<p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>`
+//   + '</div>'
+//   + '</div>';
 
-  document.getElementById('quizLocation').insertAdjacentHTML('beforebegin', quiz);
+//   document.getElementById('quizLocation').insertAdjacentHTML('beforebegin', quiz);
 
 /////////////////十問js繰り返し(色の変更、解説表示、シャッフル）/////////////////
-js_motion(j);
-};
+// js_motion(j);
+// };
 
 ////////色の変化＆解説表示////////
 function js_motion(number) {
