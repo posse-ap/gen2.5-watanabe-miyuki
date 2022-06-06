@@ -1,20 +1,29 @@
+<?php
+require('dbconnect.php');
+
+$stmt = $db->query('SELECT * FROM big_questions');
+$big_question_results = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>quizy</title>
-  <!-- <link rel="stylesheet" href="normalize.css" /> -->
-  <link rel="stylesheet" href="quizy.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クイズ選択</title>
 </head>
+
 <body>
-  <main>
-    <section class="question">
-      <div id="quizLocation"></div>
-    </section>
-  </main>
-  <script src="quizy.js"></script>
+<?php foreach ($big_question_results as $big_question_result) : ?>
+
+<div>
+  <a href="/quiz.php?id=<?= $big_question_result['id'] ?>"><?= $big_question_result['id'] . '：' . $big_question_result['name']; ?></a> 
+</div>
+<?php endforeach; ?>
+
+
 </body>
+
 </html>

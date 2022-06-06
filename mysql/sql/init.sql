@@ -1,7 +1,11 @@
-DROP SCHEMA IF EXISTS quizy;
-CREATE SCHEMA quizy;
-USE quizy;
+DROP TABLE IF EXISTS big_questions;
+CREATE TABLE big_questions (
+  id SMALLINT(4),
+  name VARCHAR(255) NOT NULL
+);
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+INSERT INTO big_questions
+VALUES
+  (1, '東京の難読地名クイズ'),
+  (2, '広島県の難読地名クイズ');
+
