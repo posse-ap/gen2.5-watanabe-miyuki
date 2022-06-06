@@ -19,7 +19,7 @@ $big_question_results = $stmt->fetchAll();
 <?php foreach ($big_question_results as $big_question_result) : ?>
 
 <div>
-  <a href="/quiz.php?id=<?= $big_question_result['id'] ?>"><?= $big_question_result['id'] . '：' . $big_question_result['name']; ?></a> 
+  <a href="/quiz.php?id=<?= $big_question_result['id'] ?>"><?= $big_question_result['id'] . '. ' . $big_question_result['name']; ?></a> 
 </div>
 <?php endforeach; ?>
 
