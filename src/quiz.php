@@ -2,12 +2,6 @@
 require('dbconnect.php');
 $id = $_GET['id'];
 
-// $stmt = $db->query(SELECT * FROM big_questions);
-// $big_question_results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// echo<pre>;
-// var_dump($big_question_results);
-// echo</pre>;
-
 // title表示用
 $stmt = $db->prepare("SELECT name FROM big_questions WHERE id = ?");
 $stmt->execute([$id]);
@@ -16,11 +10,24 @@ $title = $stmt->fetch(PDO::FETCH_COLUMN);
 // var_dump($title);
 // echo</pre>;
 
-$stmt = $db->prepare("SELECT * FROM choices WHERE question_id = ?");
+$stmt = $db->prepare("SELECT * FROM questions WHERE big_question_id = ?");
 $stmt->execute([$id]);
-$choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-print_r($choices);
+$questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// echo '<pre>';
+// print_r($questions);
+// echo '</pre>';
 
+
+$stmt = $db->prepare("SELECT * FROM choices WHERE question_id = :id");
+foreach($questions as $question){
+$stmt->bindValue('id', (int)$question['id'], PDO::PARAM_INT);
+$stmt->execute();
+$choices[] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// echo '<pre>';
+// print_r($choices);
+// echo '</pre>';
 
 ?>
 <!DOCTYPE html>
@@ -39,28 +46,21 @@ print_r($choices);
   <main>
     <?= $title ?>
     <section class="question">
-      <!-- <div id="quizLocation"></div> -->
+      <?php foreach($questions as $key => $question): ?>
       <!-- ここから -->
       <div class="question-inner">
         <h2 class="question-title">
-          <span class="under">${j1}. この地名はな</span>んて読む？
+          <span class="under"><?= $key + 1?>. この地名はな</span>んて読む？
         </h2>
-        <img src="${images[j]}" alt="${options[j][1]}">
+        <img src="./img/<?= $question['image']?>" alt="${options[j][1]}">
         <ul id="question-list${j}">
-          <li class="question-list-item-nonCorrect" id="${j}item0">${options[j][0]}</li>
-          <li class=question-list-item-correct${j} id="${j}item1">${options[j][1]}</li>
-          <li class="question-list-item-nonCorrect" id="${j}item2">${options[j][2]}</li>
+        <?php foreach($choices[$key] as $choice): ?>
+          <li class="question-list-item-nonCorrect" id="${j}item0"><?= $choice['name']?></li>
+        <? endforeach?>
+        </ul>
       </div>
-      <div class="question-correctBox${j}">
-        <h3<span class="question-correctBox-title">正解！</span></h3>
-          <p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>
-      </div>
-      <div class="question-nonCorrectBox${j}">
-        <h3><span class="question-nonCorrectBox-title">不正解！</span></h3>
-        <p class="question-correctBox-description">正解は「${options[j][1]}」です！</p>
-      </div>
-      </div>;
       <!-- ここまで -->
+      <?php endforeach; ?>
     </section>
   </main>
   <script src="quizy.js"></script>

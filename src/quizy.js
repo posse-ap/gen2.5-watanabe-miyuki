@@ -26,7 +26,7 @@
 //   ["こばく", "こぐれ", "こしゃく"],
 //   ];
 
-/////////////////十問html繰り返し/////////////////
+// ///////////////十問html繰り返し/////////////////
 // for (let j = 0; j < 10; j++) {
 //   let quiz =
 //   '<div class="question-inner">'
@@ -51,54 +51,54 @@
 
 //   document.getElementById('quizLocation').insertAdjacentHTML('beforebegin', quiz);
 
-/////////////////十問js繰り返し(色の変更、解説表示、シャッフル）/////////////////
+// ///////////////十問js繰り返し(色の変更、解説表示、シャッフル）/////////////////
 // js_motion(j);
 // };
 
-////////色の変化＆解説表示////////
-function js_motion(number) {
-  // js-nonCorrectBox 非表示
-document.querySelector(`.question-correctBox${number}`).style.display ="none";
-document.querySelector(`.question-nonCorrectBox${number}`).style.display ="none";
+// ////////色の変化＆解説表示////////
+// function js_motion(number) {
+//   // js-nonCorrectBox 非表示
+// document.querySelector(`.question-correctBox${number}`).style.display ="none";
+// document.querySelector(`.question-nonCorrectBox${number}`).style.display ="none";
 
-  // question-list-item-js-nonCorrectをクリック→
-  // .question-list-item-js-nonCorrect(css)適応＆js-nonCorrectBox非表示を解除＆クリックは一度
-document.getElementById(`question-list${number}`).addEventListener('click', e => {
-    if (e.target.className === 'question-list-item-nonCorrect') {
-    e.target.classList.add('question-list-item-changing-color-nonCorrect');
-    document.querySelector(`.question-list-item-correct${number}`).classList.add('question-list-item-changing-color-correct');
-    document.querySelector(`.question-nonCorrectBox${number}`).style.display ="block";
-    }else if (e.target.className === `question-list-item-correct${number}`) {
-    e.target.classList.add('question-list-item-changing-color-correct');
-    document.querySelector(`.question-correctBox${number}`).style.display ="block";
-    }},
-    { once: true });
+//   // question-list-item-js-nonCorrectをクリック→
+//   // .question-list-item-js-nonCorrect(css)適応＆js-nonCorrectBox非表示を解除＆クリックは一度
+// document.getElementById(`question-list${number}`).addEventListener('click', e => {
+//     if (e.target.className === 'question-list-item-nonCorrect') {
+//     e.target.classList.add('question-list-item-changing-color-nonCorrect');
+//     document.querySelector(`.question-list-item-correct${number}`).classList.add('question-list-item-changing-color-correct');
+//     document.querySelector(`.question-nonCorrectBox${number}`).style.display ="block";
+//     }else if (e.target.className === `question-list-item-correct${number}`) {
+//     e.target.classList.add('question-list-item-changing-color-correct');
+//     document.querySelector(`.question-correctBox${number}`).style.display ="block";
+//     }},
+//     { once: true });
 
 
-////////シャッフル////////
+// ////////シャッフル////////
 
-  //フィッシャーイーツで[0,1,2]をランダムに並び変える。
-a = [0,1,2]
-    //取り出す範囲(箱の中)を末尾から狭める繰り返し
-for(i = a.length -1;i>0;i--){
-    //乱数生成を使ってランダムに取り出す値を決める
-    r = Math.floor(Math.random()*(i+1));
-    //取り出した値と箱の外の先頭の値を交換する
-    tmp = a[i];
-    a[i] = a[r];
-    a[r] = tmp;
+//   //フィッシャーイーツで[0,1,2]をランダムに並び変える。
+// a = [0,1,2]
+//     //取り出す範囲(箱の中)を末尾から狭める繰り返し
+// for(i = a.length -1;i>0;i--){
+//     //乱数生成を使ってランダムに取り出す値を決める
+//     r = Math.floor(Math.random()*(i+1));
+//     //取り出した値と箱の外の先頭の値を交換する
+//     tmp = a[i];
+//     a[i] = a[r];
+//     a[r] = tmp;
 
-  //例 a = [2,1,0]
-  //2,1,0の順で選択肢三問を取得、表示
-var itemShuffle0= document.getElementById(`${number}item${a[0]}`);
-var itemShuffle1= document.getElementById(`${number}item${a[1]}`);
-var itemShuffle2= document.getElementById(`${number}item${a[2]}`);
+//   //例 a = [2,1,0]
+//   //2,1,0の順で選択肢三問を取得、表示
+// var itemShuffle0= document.getElementById(`${number}item${a[0]}`);
+// var itemShuffle1= document.getElementById(`${number}item${a[1]}`);
+// var itemShuffle2= document.getElementById(`${number}item${a[2]}`);
 
-document.getElementById(`question-list${number}`).removeChild(itemShuffle0);
-document.getElementById(`question-list${number}`).appendChild(itemShuffle0);
-document.getElementById(`question-list${number}`).removeChild(itemShuffle1);
-document.getElementById(`question-list${number}`).appendChild(itemShuffle1);
-document.getElementById(`question-list${number}`).removeChild(itemShuffle2);
-document.getElementById(`question-list${number}`).appendChild(itemShuffle2);
-};
-}
+// document.getElementById(`question-list${number}`).removeChild(itemShuffle0);
+// document.getElementById(`question-list${number}`).appendChild(itemShuffle0);
+// document.getElementById(`question-list${number}`).removeChild(itemShuffle1);
+// document.getElementById(`question-list${number}`).appendChild(itemShuffle1);
+// document.getElementById(`question-list${number}`).removeChild(itemShuffle2);
+// document.getElementById(`question-list${number}`).appendChild(itemShuffle2);
+// };
+// }
