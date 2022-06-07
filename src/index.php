@@ -59,14 +59,15 @@ $PieChart_data = arraySum($list);
 // パイチャートのデータここまで
 
 // 棒グラフ用データ//参考https://bitstar.jp/blog/2010/11/11/2388/
-$stmt = $db->prepare("SELECT DATE(date), Sum(time)
-FROM records
-WHERE DATE_FORMAT(date, '%Y%m')=202206
-GROUP BY DATE(date)");
+$stmt = $db->prepare(" SELECT ADDDATE('2022-06-01', V.Number) as Date, IFNULL(Sum(R.time),0) as time
+FROM vw_sequence99 as V LEFT JOIN records as R
+ON ADDDATE('2022-06-01', V.Number) = DATE(R.`date`)
+WHERE ADDDATE('2022-06-01', V.Number) BETWEEN '2022-06-01' AND '2022-06-30'
+GROUP BY ADDDATE('2022-06-01', V.Number) ORDER BY Date;");
 $stmt->execute();
-$records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$BarChart_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // echo '<pre>';
-// var_dump($records);
+// var_dump($BarChart_data);
 // echo '</pre>';
 // 棒グラフデータここまで
 
@@ -102,28 +103,6 @@ $Total = $stmt->fetch(PDO::FETCH_COLUMN);
 // var_dump($Total);
 // echo'</pre>';
 //日・月・合計ここまで
-
-// 日付テスト
-// $stmt = $db->prepare("SELECT ADDDATE('2022-06-01', V.Number) as Date
-// FROM vw_sequence99 as V
-// WHERE ADDDATE('2022-06-01', V.Number) BETWEEN '2022-06-01' AND '2022-06-30' ORDER BY Date");
-// $stmt->execute();
-// $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// echo'<pre>';
-// var_dump($result);
-// echo'</pre>';
-// 日付ここまで
-
-$stmt = $db->prepare(" SELECT ADDDATE('2022-06-01', V.Number) as Date, IFNULL(Sum(R.time),0) as time
-FROM vw_sequence99 as V LEFT JOIN records as R
-ON ADDDATE('2022-06-01', V.Number) = DATE(R.`date`)
-WHERE ADDDATE('2022-06-01', V.Number) BETWEEN '2022-06-01' AND '2022-06-30'
-GROUP BY ADDDATE('2022-06-01', V.Number) ORDER BY Date;");
-$stmt->execute();
-$records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo '<pre>';
-var_dump($records);
-echo '</pre>';
 ?>
 
 <!DOCTYPE html>
@@ -296,7 +275,7 @@ echo '</pre>';
 
       <div>
         <div class="date">
-          <span class="back_date">＜</span>2020年 10月<span class="next_date">＞</span>
+          <span class="back_date">＜</span>2022年 6月<span class="next_date">＞</span>
         </div>
         <button onclick="showModal()" class="js-open button-design button-sp">
           記録・投稿
@@ -381,39 +360,12 @@ function drawChart1() {
   data.addColumn("string", "day");
   data.addColumn("number", "hour");
   data.addRows([
-    ["", 3],
-    ["2", 4],
-    ["", 5],
-    ["4", 3],
-    ["", 3],
-    ["6", 0],
-    ["", 0],
-    ["8", 4],
-    ["", 2],
-    ["10", 2],
-    ["", 8],
-    ["12", 8],
-    ["", 2],
-    ["14", 2],
-    ["", 1],
-    ["16", 7],
-    ["", 4],
-    ["18", 4],
-    ["", 3],
-    ["20", 3],
-    ["", 2],
-    ["22", 2],
-    ["", 6],
-    ["24", 2],
-    ["", 1],
-    ["26", 1],
-    ["", 1],
-    ["28", 1],
-    ["", 7],
-    ["30", 8],
+  <?php foreach($BarChart_data as $key => $bd):?>
+    
+    ["<?php if($key%2 == 1){ echo ($key+1) ;}?>", <?=$bd['time']?>],
+  <?php endforeach; ?>
   ]);
   var options = {
-    // title:'none
     chartArea: { width: "70%", height: "70%" },
     legend: { position: "none" },
     color: ["#20bdde"],
