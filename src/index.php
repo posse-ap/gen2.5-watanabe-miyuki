@@ -10,31 +10,21 @@ $id = $_GET['id'];
 // var_dump($records);
 // echo'</pre>';
 
-// パイチャート用
-// 時間/学習コンテンツ、言語数　6月のみ表示させる（whereで絞る）
-$stmt = $db->prepare("SELECT *, (N + dotInstall + POSSE) AS total_contents, time/(N + dotInstall + POSSE) as t_c, (HTML + CSS + PHP + Laravel + SHELL + other) AS total_languages, time/(HTML + CSS + PHP + Laravel + SHELL + other) AS t_l FROM records WHERE DATE_FORMAT(date, '%Y%m')=202206");
+// testここから
+$stmt = $db->prepare("SELECT 
+N*time/(N + dotInstall + POSSE) AS N, 
+dotInstall*time/(N + dotInstall + POSSE) as dotInstall, 
+POSSE*time/(N + dotInstall + POSSE) as POSSE, 
+HTML*time/(HTML + CSS + PHP + Laravel + SHELL + other) AS HTML,
+CSS*time/(HTML + CSS + PHP + Laravel + SHELL + other) AS CSS,
+PHP*time/(HTML + CSS + PHP + Laravel + SHELL + other) AS PHP,
+Laravel*time/(HTML + CSS + PHP + Laravel + SHELL + other) AS Laravel,
+SHELL*time/(HTML + CSS + PHP + Laravel + SHELL + other) AS SHELL,
+other*time/(HTML + CSS + PHP + Laravel + SHELL + other) AS other
+  FROM records WHERE DATE_FORMAT(date, '%Y%m')=202206");
 $stmt->execute();
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// echo'<pre>';
-// var_dump($records);
-// echo'</pre>';
-
-$list = [];
-foreach ($records as $k => $r) {
-  $list[$k]['N'] = $r["t_c"] * $r['N'];
-  $list[$k]['dotInstall'] = $r["t_c"] * $r['dotInstall'];
-  $list[$k]['POSSE'] = $r["t_c"] * $r['POSSE'];
-  $list[$k]['HTML'] = $r["t_l"] * $r['HTML'];
-  $list[$k]['CSS'] = $r["t_l"] * $r['CSS'];
-  $list[$k]['HTML'] = $r["t_l"] * $r['HTML'];
-  $list[$k]['PHP'] = $r["t_l"] * $r['PHP'];
-  $list[$k]['Laravel'] = $r["t_l"] * $r['Laravel'];
-  $list[$k]['SHELL'] = $r["t_l"] * $r['SHELL'];
-  $list[$k]['other'] = $r["t_l"] * $r['other'];
-}
-// echo'<pre>';
-// var_dump($list);
-// echo'</pre>';
+// ここまで
 
 // 参考https://teratail.com/questions/45703
 function arraySum(array $arr)
@@ -55,7 +45,7 @@ function arraySum(array $arr)
 }
 
 // var_dump(arraySum($list));
-$PieChart_data = arraySum($list);
+$PieChart_data = arraySum($records);
 // パイチャートのデータここまで
 
 // 棒グラフ用データ//参考https://bitstar.jp/blog/2010/11/11/2388/
