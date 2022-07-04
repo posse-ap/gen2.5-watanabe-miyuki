@@ -1,14 +1,5 @@
 <?php
 require('dbconnect.php');
-$id = $_GET['id'];
-
-// table全表示
-// $stmt = $db->prepare("SELECT * FROM records");
-// $stmt->execute();
-// $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// echo'<pre>';
-// var_dump($records);
-// echo'</pre>';
 
 // testここから
 $stmt = $db->prepare("SELECT 
@@ -56,23 +47,16 @@ WHERE ADDDATE('2022-06-01', V.Number) BETWEEN '2022-06-01' AND '2022-06-30'
 GROUP BY ADDDATE('2022-06-01', V.Number) ORDER BY Date;");
 $stmt->execute();
 $BarChart_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// echo '<pre>';
-// var_dump($BarChart_data);
-// echo '</pre>';
 // 棒グラフデータここまで
 
 // 日・月・合計
 // 日
-// $today = date("Y-m-d");
 $today = date("2022-6-28");
 $stmt = $db->prepare("SELECT Sum(time)
 FROM records where date = :date");
 $stmt->bindValue(':date', $today, PDO::PARAM_STR);
 $stmt->execute();
 $Today = $stmt->fetch(PDO::FETCH_COLUMN);
-// echo'<pre>';
-// var_dump($Today);
-// echo'</pre>';
 
 // 月
 $stmt = $db->prepare("SELECT Sum(time)
@@ -80,18 +64,13 @@ FROM records
 WHERE date BETWEEN '2022/06/01 00:00:00' AND '2022/06/30 23:59:59'");
 $stmt->execute();
 $Month = $stmt->fetch(PDO::FETCH_COLUMN);
-// echo'<pre>';
-// var_dump($Month);
-// echo'</pre>';
+
 
 // 合計
 $stmt = $db->prepare("SELECT Sum(time)
 FROM records");
 $stmt->execute();
 $Total = $stmt->fetch(PDO::FETCH_COLUMN);
-// echo'<pre>';
-// var_dump($Total);
-// echo'</pre>';
 //日・月・合計ここまで
 ?>
 
